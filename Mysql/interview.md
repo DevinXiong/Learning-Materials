@@ -27,3 +27,8 @@
 Binlog是记录所有数据库表结构变更以及表数据修改的二进制日志，主要用于数据复制和备份、主从同步和数据恢复，写入时机是事务提交的时候。文件的记录模式有STATEMENT、ROW、MIXED三种.
 
 ![Binlog写入时机的示例图](https://i.imgur.com/4MVEr63.png)
+
+STATAMENT记录每次执行的sql命令，日志小，但是有些sql有毒，比如now()可能导致恢复的时候与之前数据不一致。针对这种函数也有解决方案，如下是一个binlog截图，先设置当前时间戳，然后在运行now()这句sql。
+![binlog中特殊方法now()的处理](https://i.imgur.com/gOCFhdH.png "now()在binlog中的处理方法")
+ROW记录每一行被改的数据，能还原所有的细节，但是如果有加一列这种操作，导致全表都会生成binlog。
+MIXED则是两者结合。
