@@ -26,4 +26,4 @@
 # 5.bin log
 Binlog是记录所有数据库表结构变更以及表数据修改的二进制日志，主要用于数据复制和备份、主从同步和数据恢复，写入时机是事务提交的时候。文件的记录模式有STATEMENT、ROW、MIXED三种.
 
-![binlog的示例流程图](https://i.imgur.com/YbMkQSh.png)
+![Binlog示例图片](https://i.imgur.com/4MVEr63.png)
